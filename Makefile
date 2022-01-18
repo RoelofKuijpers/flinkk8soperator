@@ -4,7 +4,7 @@ include boilerplate/lyft/golang_test_targets/Makefile
 
 .PHONY: generate
 generate:
-	tmp/codegen/update-generated.sh
+	GO111MODULE=off tmp/codegen/update-generated.sh
 
 .PHONY: compile
 compile: generate
@@ -13,7 +13,7 @@ compile: generate
 
 .PHONY: linux_compile
 linux_compile: generate
-	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o /artifacts/flinkoperator ./cmd/flinkk8soperator/main.go
+	GO111MODULE=off GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o /artifacts/flinkoperator ./cmd/flinkk8soperator/main.go
 
 gen-config:
 	which pflags || (go get github.com/lyft/flytestdlib/cli/pflags)
