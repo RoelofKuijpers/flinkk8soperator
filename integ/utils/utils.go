@@ -122,7 +122,7 @@ func (f *TestUtil) CreateCRD() error {
 		return err
 	}
 
-	crd := v1beta1.CustomResourceDefinition{}
+	crd := v1.CustomResourceDefinition{}
 	err = yaml.NewYAMLOrJSONDecoder(file, 1024).Decode(&crd)
 	if err != nil {
 		return err
@@ -130,7 +130,7 @@ func (f *TestUtil) CreateCRD() error {
 
 	crd.Namespace = f.Namespace.Name
 
-	_, err = f.APIExtensionsClient.ApiextensionsV1beta1().CustomResourceDefinitions().Create(&crd)
+	_, err = f.APIExtensionsClient.ApiextensionsV1().CustomResourceDefinitions().Create(&crd)
 	if err != nil {
 		return err
 	}

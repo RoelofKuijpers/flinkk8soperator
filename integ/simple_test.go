@@ -25,7 +25,7 @@ func updateAndValidate(c *C, s *IntegSuite, name string, updateFn func(app *v1be
 	c.Assert(s.Util.WaitForPhase(name, v1beta1.FlinkApplicationRunning, failurePhase), IsNil)
 	c.Assert(s.Util.WaitForAllTasksRunning(name), IsNil)
 
-	// check that it really updated
+	// check that it really update
 	newApp, err := s.Util.GetFlinkApplication(name)
 	c.Assert(err, IsNil)
 	c.Assert(newApp.Status.JobStatus.JobID, Not(Equals), app.Status.JobStatus.JobID)
