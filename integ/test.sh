@@ -3,7 +3,7 @@
 set -e
 
 export INTEGRATION=true
-export OPERATOR_IMAGE=127.0.0.1:32000/flinkk8soperator:local
+export OPERATOR_IMAGE=localhost:5000/flinkk8soperator:local
 
 # needed to create the checkpoints directory with world-writable permissions
 umask 000
